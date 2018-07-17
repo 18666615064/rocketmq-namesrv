@@ -1,5 +1,6 @@
 services:
   namesrv:
+    container_name: rocketmq-namesvr
     image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-namesvr'
     environment:
       LANG: C.UTF-8
@@ -11,6 +12,7 @@ services:
       - '/opt/logs'
       - '/opt/store'
   broker:
+    container_name: rocketmq-broker
     image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-broker'
     environment:
       NAMESRV_ADDR: 127.0.0.1:9876
