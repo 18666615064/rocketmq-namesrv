@@ -1,0 +1,39 @@
+services:
+  namesrv:
+    image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-namesvr:latest'
+    restart: always
+    environment:
+      - LANG=C.UTF-8
+      - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+      - ROCKETMQ_HOME=/opt/rocketmq-4.2.0
+    ports:
+      - "9876:9876"
+    labels:
+      aliyun.scale: '1'
+    volumes:
+      - /opt/logs
+      - /opt/store
+      - /etc/localtime:/etc/localtim:ro
+    networks:
+      - elsi-trunk
+    broker:
+      image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-broker:latest'
+      restart: always
+      environment:
+        - NAMESRV_ADDR= 127.0.0.1:9876
+        - LANG=C.UTF-8
+        - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+        - ROCKETMQ_HOME=/opt/rocketmq-4.2.0
+      ports:
+        - '10909:10909'
+        - '10911:10911'
+      labels:
+        aliyun.scale: '1'
+      volumes:
+        - /opt/logs
+        - /opt/store
+      networks:
+        - elsi-trunk
+networks:
+  elsi-trunk:
+    external: true
