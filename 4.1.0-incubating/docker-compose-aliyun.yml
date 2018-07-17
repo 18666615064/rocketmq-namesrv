@@ -9,8 +9,8 @@ services:
     ports:
       - '9876:9876'
     volumes:
-      - ./namesrv/logs:/opt/logs
-      - ./namesrv/store:/opt/store
+      - '/opt/logs'
+      - '/opt/store'
    broker:
     image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-broker:latest'
     restart: always
@@ -23,7 +23,7 @@ services:
       - '10909:10909'
       - '10911:10911'
     volumes:
-      - ./broker/logs:/opt/logs
-      - ./broker/store:/opt/store
+      - '/opt/logs'
+      - '/opt/store'
     depends_on:
       - namesrv
