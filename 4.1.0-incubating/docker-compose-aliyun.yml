@@ -2,9 +2,9 @@ services:
   namesrv:
     image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-namesvr'
     environment:
-      - LANG=C.UTF-8
-      - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-      - ROCKETMQ_HOME=/opt/rocketmq-4.1.0-incubating
+      LANG: C.UTF-8
+      JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
+      ROCKETMQ_HOME: /opt/rocketmq-4.1.0-incubating
     ports:
       - '9876:9876'
     volumes:
@@ -15,10 +15,10 @@ services:
   broker:
     image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-broker'
     environment:
-      - NAMESRV_ADDR=127.0.0.1:9876
-      - LANG=C.UTF-8
-      - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-      - ROCKETMQ_HOME=/opt/rocketmq-4.1.0-incubating
+      NAMESRV_ADDR: 127.0.0.1:9876
+      LANG: C.UTF-8
+      JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
+      ROCKETMQ_HOME: /opt/rocketmq-4.1.0-incubating
     ports:
       - '10909:10909'
       - '10911:10911'
