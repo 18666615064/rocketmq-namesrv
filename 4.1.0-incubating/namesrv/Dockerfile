@@ -24,7 +24,7 @@ ARG version
 ENV ROCKETMQ_VERSION ${version}
 
 # Rocketmq home
-ENV ROCKETMQ_HOME  /opt/rocketmq-4.1.0-incubating
+ENV ROCKETMQ_HOME  /opt/rocketmq-all-4.1.0-incubating
 
 WORKDIR  ${ROCKETMQ_HOME}
 
@@ -37,7 +37,7 @@ RUN curl http://mirror.bit.edu.cn/apache/rocketmq/4.1.0-incubating/rocketmq-all-
           && rm rocketmq-all-4.1.0-incubating-bin-release.zip
 
 
-RUN chmod +x ${ROCKETMQ_HOME}/bin/mqnamesrv
+RUN chmod +x bin/mqnamesrv
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
