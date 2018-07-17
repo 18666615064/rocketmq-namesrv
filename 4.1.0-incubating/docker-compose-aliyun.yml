@@ -1,6 +1,6 @@
 services:
   namesrv:
-    image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-namesvr:latest'
+    image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-namesvr'
     restart: always
     environment:
       - LANG=C.UTF-8
@@ -14,7 +14,7 @@ services:
     networks:
       - elsi-trunk
   broker:
-    image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-broker:latest'
+    image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-broker'
     restart: always
     environment:
       - NAMESRV_ADDR= 127.0.0.1:9876
