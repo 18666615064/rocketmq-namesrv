@@ -36,7 +36,7 @@ RUN curl http://mirror.bit.edu.cn/apache/rocketmq/4.1.0-incubating/rocketmq-all-
           && unzip rocketmq-all-4.1.0-incubating-bin-release.zip \
           && rm rocketmq-all-4.1.0-incubating-bin-release.zip \
 		  && mv rocketmq-all-4.1.0-incubating/* ${ROCKETMQ_HOME}/ \
-		  && rm rocketmq-all-4.1.0-incubating
+		  && rm -rf rocketmq-all-4.1.0-incubating
 
 RUN ls
 RUN chmod +x ${ROCKETMQ_HOME}/bin/mqnamesrv
