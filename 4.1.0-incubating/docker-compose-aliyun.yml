@@ -1,3 +1,4 @@
+version: 1.0
 services:
   namesrv:
     image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-namesvr:latest'
@@ -11,7 +12,7 @@ services:
     volumes:
       - '/opt/logs'
       - '/opt/store'
-   broker:
+  broker:
     image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-broker:latest'
     restart: always
     environment:
