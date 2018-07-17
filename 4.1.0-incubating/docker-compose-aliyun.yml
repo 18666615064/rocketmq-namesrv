@@ -8,8 +8,6 @@ services:
       - ROCKETMQ_HOME=/opt/rocketmq-4.1.0-incubating
     ports:
       - '9876:9876'
-    labels:
-      aliyun.scale: '1'
     volumes:
       - ./namesrv/logs:/opt/logs
       - ./namesrv/store:/opt/store
@@ -24,8 +22,6 @@ services:
     ports:
       - '10909:10909'
       - '10911:10911'
-    labels:
-      aliyun.scale: '1'
     volumes:
       - ./broker/logs:/opt/logs
       - ./broker/store:/opt/store
