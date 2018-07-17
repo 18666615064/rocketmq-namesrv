@@ -11,6 +11,8 @@ services:
     volumes:
       - '/opt/logs'
       - '/opt/store'
+    networks:
+      - elsi-trunk
   broker:
     image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-broker:latest'
     restart: always
@@ -27,3 +29,8 @@ services:
       - '/opt/store'
     depends_on:
       - namesrv
+    networks:
+      - elsi-trunk
+networks:
+  elsi-trunk:
+    external: true
