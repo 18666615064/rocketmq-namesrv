@@ -1,20 +1,14 @@
 version: '2'
 services:
   namesrv:
-    build:
-      context: ./namesrv
-      args:
-        - version=4.1.0-incubating
+    image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-namesvr:latest'
     ports:
       - 9876:9876
     volumes:
       - ./namesrv/logs:/opt/logs
       - ./namesrv/store:/opt/store
   broker:
-    build:
-      context: ./broker
-      args:
-        - version=4.1.0-incubating
+    image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-broker:latest'
     ports:
       - 10909:10909
       - 10911:10911
