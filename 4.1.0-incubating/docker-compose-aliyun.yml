@@ -14,8 +14,6 @@ services:
       - /opt/logs
       - /opt/store
       - /etc/localtime:/etc/localtim:ro
-    networks:
-      - elsi-trunk
    broker:
     image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-broker:latest'
     restart: always
@@ -32,8 +30,5 @@ services:
     volumes:
       - /opt/logs
       - /opt/store
-    networks:
-      - elsi-trunk
-networks:
-  elsi-trunk:
-    external: true
+    depends_on:
+      - namesrv
