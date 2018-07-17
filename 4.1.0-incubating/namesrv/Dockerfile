@@ -24,7 +24,7 @@ ARG version
 ENV ROCKETMQ_VERSION ${version}
 
 # Rocketmq home
-ENV ROCKETMQ_HOME  /opt/rocketmq-all-4.1.0-incubating
+ENV ROCKETMQ_HOME  /opt/rocketmq-4.1.0-incubating
 
 WORKDIR  ${ROCKETMQ_HOME}
 
@@ -35,6 +35,7 @@ RUN mkdir -p \
 RUN curl http://mirror.bit.edu.cn/apache/rocketmq/4.1.0-incubating/rocketmq-all-4.1.0-incubating-bin-release.zip -o rocketmq-all-4.1.0-incubating-bin-release.zip \
           && unzip rocketmq-all-4.1.0-incubating-bin-release.zip \
           && rm rocketmq-all-4.1.0-incubating-bin-release.zip
+		  && mv rocketmq-all-4.1.0-incubating ${ROCKETMQ_HOME}
 
 
 RUN chmod +x ${ROCKETMQ_HOME}/bin/mqnamesrv
