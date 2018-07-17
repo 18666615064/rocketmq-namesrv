@@ -11,8 +11,8 @@ services:
     labels:
       aliyun.scale: '1'
     volumes:
-      - /opt/logs
-      - /opt/store
+      - ./namesrv/logs:/opt/logs
+      - ./namesrv/store:/opt/store
    broker:
     image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-broker:latest'
     restart: always
@@ -27,7 +27,7 @@ services:
     labels:
       aliyun.scale: '1'
     volumes:
-      - /opt/logs
-      - /opt/store
+      - ./broker/logs:/opt/logs
+      - ./broker/store:/opt/store
     depends_on:
       - namesrv
