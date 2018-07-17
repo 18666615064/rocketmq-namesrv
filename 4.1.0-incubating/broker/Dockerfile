@@ -24,8 +24,7 @@ ARG version
 ENV ROCKETMQ_VERSION ${version}
 
 # Rocketmq home
-ENV ROCKETMQ_HOME  /opt/rocketmq-${ROCKETMQ_VERSION}
-
+ENV ROCKETMQ_HOME  /opt/rocketmq-4.1.0-incubating
 
 
 WORKDIR  ${ROCKETMQ_HOME}
@@ -34,13 +33,15 @@ RUN mkdir -p \
 		/opt/logs \
 	    /opt/store
 
-RUN curl http://mirror.bit.edu.cn/apache/rocketmq/${ROCKETMQ_VERSION}/rocketmq-all-${ROCKETMQ_VERSION}-bin-release.zip -o rocketmq-all-${ROCKETMQ_VERSION}-bin-release.zip \
-          && unzip rocketmq-all-${ROCKETMQ_VERSION}-bin-release.zip \
-          && rm rocketmq-all-${ROCKETMQ_VERSION}-bin-release.zip
+RUN curl http://mirror.bit.edu.cn/apache/rocketmq/4.1.0-incubating/rocketmq-all-4.1.0-incubating-bin-release.zip -o rocketmq-all-4.1.0-incubating-bin-release.zip \
+          && unzip rocketmq-all-4.1.0-incubating-bin-release.zip \
+          && rm rocketmq-all-4.1.0-incubating-bin-release.zip \
+		  && mv rocketmq-all-4.1.0-incubating/* ${ROCKETMQ_HOME}/ \
+		  && rm -rf rocketmq-all-4.1.0-incubating
 
-
-
-RUN chmod +x bin/mqbroker
+RUN chmod +x ${ROCKETMQ_HOME}/bin/mqbroker
+ENV TZ=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 CMD cd ${ROCKETMQ_HOME}/bin && export JAVA_OPT=" -Duser.home=/opt" && sh mqbroker -n namesrv:9876
 
