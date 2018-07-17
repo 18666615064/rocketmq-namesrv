@@ -37,7 +37,7 @@ RUN curl http://mirror.bit.edu.cn/apache/rocketmq/4.1.0-incubating/rocketmq-all-
           && rm rocketmq-all-4.1.0-incubating-bin-release.zip
 
 
-RUN chmod +x bin/mqnamesrv
+RUN chmod +x ${ROCKETMQ_HOME}/bin/mqnamesrv
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
