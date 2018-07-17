@@ -24,7 +24,7 @@ ARG version
 ENV ROCKETMQ_VERSION ${version}
 
 # Rocketmq home
-ENV ROCKETMQ_HOME  /opt/rocketmq-${ROCKETMQ_VERSION}
+ENV ROCKETMQ_HOME  /opt/rocketmq-4.1.0-incubating
 
 WORKDIR  ${ROCKETMQ_HOME}
 
