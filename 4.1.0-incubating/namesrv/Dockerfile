@@ -32,11 +32,9 @@ RUN mkdir -p \
 		/opt/logs \
 		/opt/store
 
-RUN curl https://dist.apache.org/repos/dist/release/rocketmq/${ROCKETMQ_VERSION}/rocketmq-all-${ROCKETMQ_VERSION}-bin-release.zip -o rocketmq.zip \
-          && unzip rocketmq.zip \
-          && mv rocketmq-all*/* . \
-          && rmdir rocketmq-all*  \
-          && rm rocketmq.zip
+RUN curl http://mirror.bit.edu.cn/apache/rocketmq/${ROCKETMQ_VERSION}/rocketmq-all-${ROCKETMQ_VERSION}-bin-release.zip -o rocketmq-all-${ROCKETMQ_VERSION}-bin-release.zip \
+          && unzip rocketmq-all-${ROCKETMQ_VERSION}-bin-release.zip \
+          && rm rocketmq-all-${ROCKETMQ_VERSION}-bin-release.zip
 
 
 RUN chmod +x bin/mqnamesrv
