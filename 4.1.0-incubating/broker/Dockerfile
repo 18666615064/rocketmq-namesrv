@@ -42,8 +42,10 @@ RUN curl http://mirror.bit.edu.cn/apache/rocketmq/4.1.0-incubating/rocketmq-all-
 RUN chmod +x ${ROCKETMQ_HOME}/bin/mqbroker
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-
-CMD cd ${ROCKETMQ_HOME}/bin && export JAVA_OPT=" -Duser.home=/opt" && sh mqbroker -n namesrv:9876
+CMD rm -f ${ROCKETMQ_HOME}/conf/broker.properties
+CMD echo cp ${ROCKETMQ_HOME}/conf/broker.conf ${ROCKETMQ_HOME}/conf/broker.properties
+CMD echo brokerIP1 = ${BROKER_ADDR} >> ${ROCKETMQ_HOME}/conf/broker.properties
+CMD cd ${ROCKETMQ_HOME}/bin && export JAVA_OPT=" -Duser.home=/opt" && sh mqbroker -n namesrv:9876 -c ${ROCKETMQ_HOME}/conf/broker.properties
 
 
 EXPOSE 10909 10911
