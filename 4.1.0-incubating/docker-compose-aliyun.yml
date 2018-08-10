@@ -1,38 +1,38 @@
 version: '3.2'
-  services:
-    namesrvtest:
-      container_name: rocketmq-namesvr
-      image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-namesvr'
-      environment:
-        LANG: C.UTF-8
-        JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
-        ROCKETMQ_HOME: /opt/rocketmq-4.1.0-incubating
-      ports:
-        - '9876:9876'
-      volumes:
-        - '/opt/logs'
-        - '/opt/store'
-      networks:
-        - elsi-trunk
-    brokertest:
-      container_name: rocketmq-broker
-      image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-broker'
-      environment:
-        NAMESRV_ADDR: namesrvtest:9876
-        BROKER_ADDR: brokertest
-        LANG: C.UTF-8
-        JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
-        ROCKETMQ_HOME: /opt/rocketmq-4.1.0-incubating
-      ports:
-        - '10909:10909'
-        - '10911:10911'
-      volumes:
-        - '/opt/logs'
-        - '/opt/store'
-      depends_on:
-        - namesrvtest
-      networks:
-        - elsi-trunk
+services:
+  namesrvtest:
+    container_name: rocketmq-namesvr
+    image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-namesvr'
+    environment:
+      LANG: C.UTF-8
+      JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
+      ROCKETMQ_HOME: /opt/rocketmq-4.1.0-incubating
+    ports:
+      - '9876:9876'
+    volumes:
+      - '/opt/logs'
+      - '/opt/store'
+    networks:
+      - elsi-trunk
+  brokertest:
+    container_name: rocketmq-broker
+    image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-broker'
+    environment:
+      NAMESRV_ADDR: namesrvtest:9876
+      BROKER_ADDR: brokertest
+      LANG: C.UTF-8
+      JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
+      ROCKETMQ_HOME: /opt/rocketmq-4.1.0-incubating
+    ports:
+      - '10909:10909'
+      - '10911:10911'
+    volumes:
+      - '/opt/logs'
+      - '/opt/store'
+    depends_on:
+      - namesrvtest
+    networks:
+      - elsi-trunk
 networks:
   elsi-trunk:
     external: true
