@@ -24,8 +24,8 @@ services:
       JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
       ROCKETMQ_HOME: /opt/rocketmq-4.1.0-incubating
     ports:
-      - '10909:109092'
-      - '10911:109112'
+      - '10909:10909'
+      - '10911:10911'
     volumes:
       - '/opt/logs'
       - '/opt/store'
