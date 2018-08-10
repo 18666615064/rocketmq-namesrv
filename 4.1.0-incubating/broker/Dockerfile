@@ -44,7 +44,7 @@ ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 CMD rm -f ${ROCKETMQ_HOME}/conf/broker.properties
 CMD echo cp ${ROCKETMQ_HOME}/conf/broker.conf ${ROCKETMQ_HOME}/conf/broker.properties
-CMD echo brokerIP1 = ${BROKER_ADDR} >> ${ROCKETMQ_HOME}/conf/broker.properties
+CMD echo brokerIP1 = broker >> ${ROCKETMQ_HOME}/conf/broker.properties
 CMD cd ${ROCKETMQ_HOME}/bin && export JAVA_OPT=" -Duser.home=/opt" && sh mqbroker -n namesrv:9876 -c ${ROCKETMQ_HOME}/conf/broker.properties
 
 
