@@ -20,9 +20,6 @@ FROM java:8
 
 ARG version
 
-# Rocketmq version
-ENV ROCKETMQ_VERSION ${version}
-
 # Rocketmq home
 ENV ROCKETMQ_HOME  /opt/rocketmq-4.1.0-incubating
 
