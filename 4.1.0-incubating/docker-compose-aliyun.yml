@@ -29,7 +29,7 @@ services:
       - '/opt/logs'
       - '/opt/store'
     depends_on:
-      - namesrvtest
+      - namesrv
     networks:
       - elsi-trunk
 networks:
