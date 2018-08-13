@@ -42,7 +42,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN rm -f ${ROCKETMQ_HOME}/conf/broker.properties
 RUN cp ${ROCKETMQ_HOME}/conf/broker.conf ${ROCKETMQ_HOME}/conf/broker.properties
 RUN echo brokerIP1 = broker >> ${ROCKETMQ_HOME}/conf/broker.properties
-CMD cd ${ROCKETMQ_HOME}/bin && export JAVA_OPT=" -Duser.home=/opt" && sh mqbroker -n namesrv:9876 -c ${ROCKETMQ_HOME}/conf/broker.properties
+
 
 
 EXPOSE 10909 10911
