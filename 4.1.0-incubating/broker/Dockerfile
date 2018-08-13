@@ -39,7 +39,7 @@ RUN curl http://mirror.bit.edu.cn/apache/rocketmq/4.1.0-incubating/rocketmq-all-
 RUN chmod +x ${ROCKETMQ_HOME}/bin/mqbroker
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-
+CMD cd ${ROCKETMQ_HOME}/bin && export JAVA_OPT=" -Duser.home=/opt" && sh mqbroker -n namesrv:9876
 
 
 EXPOSE 10909 10911
