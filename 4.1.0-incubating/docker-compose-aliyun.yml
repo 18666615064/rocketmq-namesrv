@@ -18,7 +18,7 @@ services:
     container_name: rocketmq-broker
     image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/rocketmq-broker'
     environment:
-      NAMESRV_ADDR: namesrv:9876
+      NAMESRV_ADDR: namesrv:9877
       LANG: C.UTF-8
       JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
       ROCKETMQ_HOME: /opt/rocketmq-4.1.0-incubating
